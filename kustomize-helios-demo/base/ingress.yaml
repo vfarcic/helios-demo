@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: helios-demo
+  labels:
+    app.kubernetes.io/name: helios-demo
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: helios-demo
+                port:
+                  number: 8080
+      host: helios-demo.127.0.0.1.nip.io
