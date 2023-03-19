@@ -3,17 +3,8 @@ module helios-demo
 go 1.18
 
 require (
-	github.com/go-pg/pg/extra/pgotel/v10 v10.11.0
 	github.com/go-pg/pg/v10 v10.11.0
 	github.com/go-resty/resty/v2 v2.7.0
-	github.com/slack-go/slack v0.12.1
-	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.40.0
-	go.opentelemetry.io/otel v1.14.0
-	go.opentelemetry.io/otel/exporters/jaeger v1.14.0
-	go.opentelemetry.io/otel/exporters/stdout/stdouttrace v1.14.0
-	go.opentelemetry.io/otel/sdk v1.14.0
-	go.opentelemetry.io/otel/trace v1.14.0
-	k8s.io/apimachinery v0.26.2
 )
 
 require (
@@ -22,6 +13,11 @@ require (
 	github.com/helios/go-sdk/data-utils v1.0.2 // indirect
 	github.com/helios/opentelemetry-go-contrib/instrumentation/net/http/otelhttp v0.1.4 // indirect
 	github.com/ohler55/ojg v1.17.4 // indirect
+	github.com/onsi/gomega v1.23.0 // indirect
+	go.opentelemetry.io/contrib/instrumentation/github.com/gin-gonic/gin/otelgin v0.40.0 // indirect
+	go.opentelemetry.io/otel v1.14.0 // indirect
+	go.opentelemetry.io/otel/sdk v1.14.0 // indirect
+	go.opentelemetry.io/otel/trace v1.14.0 // indirect
 	golang.org/x/exp v0.0.0-20230203172020-98cc5a0785f9 // indirect
 )
 
@@ -38,10 +34,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.11.2 // indirect
 	github.com/goccy/go-json v0.10.0 // indirect
-	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
-	github.com/google/gofuzz v1.1.0 // indirect
-	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.15.0 // indirect
 	github.com/helios/go-sdk/proxy-libs/heliosgin v1.8.2
 	github.com/helios/go-sdk/proxy-libs/helioshttp v1.18.8
@@ -84,12 +77,6 @@ require (
 	google.golang.org/genproto v0.0.0-20230110181048-76db0878b65f // indirect
 	google.golang.org/grpc v1.53.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
-	gopkg.in/inf.v0 v0.9.1 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/klog/v2 v2.80.1 // indirect
-	k8s.io/utils v0.0.0-20221107191617-1a15be271d1d // indirect
 	mellium.im/sasl v0.3.1 // indirect
-	sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 // indirect
-	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 )
