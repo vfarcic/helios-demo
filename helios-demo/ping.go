@@ -8,9 +8,14 @@ import (
 	"github.com/go-resty/resty/v2"
 	gin "github.com/helios/go-sdk/proxy-libs/heliosgin"
 	http "github.com/helios/go-sdk/proxy-libs/helioshttp"
+	// "go.opentelemetry.io/otel"
 )
 
 func pingHandler(ctx *gin.Context) {
+	// carrier := make(map[string][]string)
+	// propagator := otel.GetTextMapPropagator()
+	// propagator.Inject(ctx, carrier)
+
 	req := resty.New().R().SetHeader("Content-Type", "application/text")
 	url := ctx.Query("url")
 	if len(url) == 0 {

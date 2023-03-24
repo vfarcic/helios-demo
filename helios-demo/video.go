@@ -18,20 +18,20 @@ type Video struct {
 	Title string `json:"title"`
 }
 
-func getDB(c *gin.Context) *pg.DB {
+func getDB(ctx *gin.Context) *pg.DB {
 	if dbSession != nil {
 		return dbSession
 	}
 	endpoint := os.Getenv("DB_ENDPOINT")
 	if len(endpoint) == 0 {
 		log.Println("Environment variable `DB_ENDPOINT` is empty")
-		c.String(http.StatusBadRequest, "Environment variable `DB_ENDPOINT` is empty")
+		ctx.String(http.StatusBadRequest, "Environment variable `DB_ENDPOINT` is empty")
 		return nil
 	}
 	port := os.Getenv("DB_PORT")
 	if len(port) == 0 {
 		log.Println("Environment variable `DB_PORT` is empty")
-		c.String(http.StatusBadRequest, "Environment variable `DB_PORT` is empty")
+		ctx.String(http.StatusBadRequest, "Environment variable `DB_PORT` is empty")
 		return nil
 	}
 	user := os.Getenv("DB_USER")
@@ -39,7 +39,7 @@ func getDB(c *gin.Context) *pg.DB {
 		user = os.Getenv("DB_USERNAME")
 		if len(user) == 0 {
 			log.Println("Environment variables `DB_USER` and `DB_USERNAME` are empty")
-			c.String(http.StatusBadRequest, "Environment variables `DB_USER` and `DB_USERNAME` are empty")
+			ctx.String(http.StatusBadRequest, "Environment variables `DB_USER` and `DB_USERNAME` are empty")
 			return nil
 		}
 	}
@@ -48,14 +48,14 @@ func getDB(c *gin.Context) *pg.DB {
 		pass = os.Getenv("DB_PASSWORD")
 		if len(pass) == 0 {
 			log.Println("Environment variables `DB_PASS` and `DB_PASSWORD are empty")
-			c.String(http.StatusBadRequest, "Environment variables `DB_PASS` and `DB_PASSWORD are empty")
+			ctx.String(http.StatusBadRequest, "Environment variables `DB_PASS` and `DB_PASSWORD are empty")
 			return nil
 		}
 	}
 	name := os.Getenv("DB_NAME")
 	if len(name) == 0 {
 		log.Println("Environment variable `DB_NAME` is empty")
-		c.String(http.StatusBadRequest, "Environment variable `DB_NAME` is empty")
+		ctx.String(http.StatusBadRequest, "Environment variable `DB_NAME` is empty")
 		return nil
 	}
 	dbSession := pg.Connect(&pg.Options{
@@ -64,6 +64,7 @@ func getDB(c *gin.Context) *pg.DB {
 		Password: pass,
 		Database: name,
 	})
+	dbSession.WithContext(ctx)
 	return dbSession
 }
 
